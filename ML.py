@@ -17,7 +17,7 @@ for line in reader:
     if not age:
         age = 0
     else:
-        age = float(age)
+        age = float(age)/3.0
 
     sib =int(line['SibSp'])
 
@@ -25,10 +25,10 @@ for line in reader:
 
     emb = line['Embarked']
     if emb:
-        emb = int(ord(emb))
+        emb = int(ord(emb))/3.0
     else:
         emb = 0
     test.append(np.matrix([s,clas,sex,age,sib,par,emb]))
 print(len(test))
-model = Model.Model(dataset=test,propotion=0.9,rate=20)
+model = Model.Model_log(dataset=test,propotion=0.8,rate=1)
 model.buildModel()
